@@ -5,9 +5,13 @@ require("dotenv").config();
 
 const app = express();
 
-// middleware
+// middleware & whitelisting the frontend url:
 const cors = require('cors');
- app.use(cors())
+ app.use(cors({
+  origin: 'https://ika-world-country-api-bvdtc7c3becrbjcj.newzealandnorth-01.azurewebsites.net',
+  methods: ['GET'],
+  credentials: true, 
+ }))
 
 // Create a connection pool to the database
 const pool = mysql.createPool({
